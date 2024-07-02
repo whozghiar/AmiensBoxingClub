@@ -7,7 +7,7 @@ services:
     environment:
       MARIADB_ROOT_PASSWORD: "Password123!"
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init_boxe.sql:/docker-entrypoint-initdb.d/init.sql
       - db_data:/var/lib/mysql
     restart: unless-stopped
     

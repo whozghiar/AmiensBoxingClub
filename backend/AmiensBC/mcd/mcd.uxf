@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <help_text/>
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>36</y>
+      <w>138</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>_class Utilisateur_
+--
+  +id : ObjectId
+  nom : String
+  prenom : String
+  dateNaissance : Date
+  sexe : String
+  photo : Base64
+  login : String
+  motDePasse : String
+  idCoordonnees : ObjectId
+  idLicence : ObjectId</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>78</x>
+      <y>246</y>
+      <w>126</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>_class Licence_
+--
+  +id : ObjectId
+  typeBoxe : String
+  dateDebut : Date
+  dateFin : Date
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>48</y>
+      <w>126</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>
+_class Coordonnees_
+--
+  +id : ObjectId
+  addresse : String
+  codePostal : String
+  ville : String
+  tel : String
+  email : String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>354</x>
+      <y>246</y>
+      <w>168</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>_class Facture_
+--
+  +id : ObjectId
+  dateEmission : Date
+  montant : Decimal
+  pdfFacture : Base64
+  idLicence : ObjectId</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>132</x>
+      <y>150</y>
+      <w>30</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1..1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>204</x>
+      <y>90</y>
+      <w>138</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..1
+m2=1..1</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>198</x>
+      <y>282</y>
+      <w>168</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..1
+m2=1..1</panel_attributes>
+    <additional_attributes>10.0;10.0;260.0;10.0</additional_attributes>
+  </element>
+</diagram>
