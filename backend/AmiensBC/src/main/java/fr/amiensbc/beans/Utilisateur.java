@@ -4,8 +4,12 @@ import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.sql.Date;
+import java.util.Collection;
+import java.util.List;
 
 @Data
 @Entity
@@ -17,7 +21,7 @@ import java.sql.Date;
 @EqualsAndHashCode
 @ToString
 @Schema(description = "Description d'un utilisateur")
-public class Utilisateur {
+public class Utilisateur implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,12 +53,12 @@ public class Utilisateur {
 
     // Informations de connexion
     @Schema(description = "Login de l'utilisateur", example = "johndoe")
-    @Column(name = "login")
-    private String login;
+    @Column(name = "email")
+    private String email;
 
     @Schema(description = "Mot de passe de l'utilisateur", example = "password")
     @Column(name = "mot_de_passe")
-    private String motDePasse;
+    private String password;
 
 
  // Liaisons avec les autres tables
@@ -71,6 +75,51 @@ public class Utilisateur {
     private Licence licence;
 
 
+    /**
+     * @return
+     */
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
 
+    /**
+     * @return
+     */
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
 
+    /**
+     * @return
+     */
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public boolean isEnabled() {
+        return UserDetails.super.isEnabled();
+    }
 }
